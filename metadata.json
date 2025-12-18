@@ -1,0 +1,5 @@
+{
+  "name": "CivicEase",
+  "description": "An AI-powered document assistant that analyzes official letters and forms, providing summaries, action items, and draft replies using Gemini.",
+  "requestFramePermissions": []
+}
