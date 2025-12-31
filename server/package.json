@@ -1,11 +1,9 @@
 {
-  "name": "civicease-backend",
-  "version": "1.0.0",
   "type": "module",
   "dependencies": {
     "express": "^4.18.2",
     "cors": "^2.8.5",
-    "@google/generative-ai": "^0.7.1",
-    "dotenv": "^16.3.1"
+    "dotenv": "^16.3.1",
+    "@google/generative-ai": "^0.7.1"
   }
 }
