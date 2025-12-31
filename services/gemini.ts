@@ -1,54 +1,51 @@
-import express from "express";
-import cors from "cors";
-import dotenv from "dotenv";
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { AnalysisResult, ChatMessage } from "../types";
 
-dotenv.config();
+const BACKEND = import.meta.env.VITE_BACKEND_URL;
 
-const app = express();
-app.use(cors());
-app.use(express.json({ limit: "20mb" }));
+// Convert file to base64 (unchanged, safe to keep)
+export const fileToBase64 = (file: File | Blob): Promise<string> => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onloadend = () => resolve(reader.result as string);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+};
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+// Send document to backend for analysis
+export const analyzeDocument = async (
+  file: File
+): Promise<{ analysis: AnalysisResult; base64: string }> => {
+  const fullDataUrl = await fileToBase64(file);
 
-app.post("/api/analyze", async (req, res) => {
-  try {
-    const { imageBase64 } = req.body;
+  const res = await fetch(`${BACKEND}/api/analyze`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ imageBase64: fullDataUrl })
+  });
 
-    const result = await model.generateContent([
-      {
-        inlineData: {
-          data: imageBase64.split(",")[1],
-          mimeType: "image/png"
-        }
-      },
-      "Analyze this civic document"
-    ]);
+  if (!res.ok) throw new Error("Backend analysis failed");
 
-    res.json({
-      analysis: { summary: result.response.text() }
-    });
-  } catch (e) {
-    console.error(e);
-    res.status(500).json({ error: "Analysis failed" });
-  }
-});
+  return res.json();
+};
 
-app.post("/api/chat", async (req, res) => {
-  try {
-    const { history, message } = req.body;
+// Continue chat about the same document
+export const continueChat = async (
+  imageBase64: string,
+  history: ChatMessage[],
+  userMessage: string
+) => {
+  const res = await fetch(`${BACKEND}/api/chat`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      imageBase64,
+      history,
+      message: userMessage
+    })
+  });
 
-    const chat = model.startChat({ history });
-    const result = await chat.sendMessage(message);
+  if (!res.ok) throw new Error("Chat failed");
 
-    res.json({
-      reply: result.response.text()
-    });
-  } catch (e) {
-    console.error(e);
-    res.status(500).json({ error: "Chat failed" });
-  }
-});
-
-app.listen(3000, () => console.log("Backend running"));
+  return res.json();
+};
