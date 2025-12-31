@@ -2,7 +2,7 @@ import { AnalysisResult, ChatMessage } from "../types";
 
 const BACKEND = import.meta.env.VITE_BACKEND_URL;
 
-// Convert file to base64 (unchanged, safe to keep)
+// Convert file to base64
 export const fileToBase64 = (file: File | Blob): Promise<string> => {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -12,7 +12,7 @@ export const fileToBase64 = (file: File | Blob): Promise<string> => {
   });
 };
 
-// Send document to backend for analysis
+// Send document for analysis
 export const analyzeDocument = async (
   file: File
 ): Promise<{ analysis: AnalysisResult; base64: string }> => {
@@ -29,7 +29,7 @@ export const analyzeDocument = async (
   return res.json();
 };
 
-// Continue chat about the same document
+// Continue chat
 export const continueChat = async (
   imageBase64: string,
   history: ChatMessage[],
