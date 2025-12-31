@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { AnalysisResult, UrgencyLevel, ChatMessage } from '../types';
 import { AlertTriangle, CheckCircle2, Clock, Copy, Check, ClipboardList, PenTool, Send, Bot, User, Sparkles } from 'lucide-react';
 import { createDocumentChat } from '../services/gemini';
-import { Chat } from '@google/genai';
 
 interface ResultsDisplayProps {
   result: AnalysisResult;
