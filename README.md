@@ -4,7 +4,7 @@
 
 CivicEase is an AI-powered document analysis platform designed to help everyday users understand complex legal and bureaucratic documents in seconds. Powered by **Google's Gemini 1.5 Pro**, it automatically flags predatory clauses, financial risks, and jargon.
 
-![CivicEase Dashboard](insert-link-to-your-dashboard-screenshot-here.png)
+![CivicEase Dashboard](dashboard.png)
 
 ## 🚀 Mission
 Bureaucracy is broken. Loans, rental agreements, and insurance policies are written to be confusing. CivicEase bridges the gap between institutions and individuals by turning "Legalese" into "Plain English."
@@ -24,7 +24,7 @@ Bureaucracy is broken. Loans, rental agreements, and insurance policies are writ
 ## 📸 Screenshots
 | Upload Interface | Analysis Dashboard |
 |:---:|:---:|
-| ![Upload](insert-link-to-upload-screenshot.png) | ![Dashboard](insert-link-to-dashboard-screenshot.png) |
+| ![CivicEase Dashboard](dashboard.png) | ![CivicEase Dashboard](upload.png) |
 
 ## ⚙️ Run Locally
 
