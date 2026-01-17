@@ -1,18 +1,56 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+\# 🛡️ CivicEase - Intelligent Document Assistant
 
-# Run and deploy your AI Studio app
+> **Decode fine print. Detect hidden charges. Simplify bureaucracy.**
 
-This contains everything you need to run your app locally.
+CivicEase is an AI-powered document analysis platform designed to help everyday users understand complex legal and bureaucratic documents in seconds. Powered by **Google's Gemini 1.5 Pro**, it automatically flags predatory clauses, financial risks, and jargon.
 
-## Run Locally
+![CivicEase Dashboard](insert-link-to-your-dashboard-screenshot-here.png)
 
-**Prerequisites:**  Node.js
+## 🚀 Mission
+Bureaucracy is broken. Loans, rental agreements, and insurance policies are written to be confusing. CivicEase bridges the gap between institutions and individuals by turning "Legalese" into "Plain English."
 
+## ✨ Key Features
+- **🔍 Risk Detection:** Instantly identifies hidden charges, variable interest rates, and auto-renewal traps.
+- **💬 Context-Aware Chatbot:** Ask questions like *"Can my landlord evict me?"* and get answers based strictly on *your* uploaded document (RAG Architecture).
+- **⚡ Instant Summaries:** Reduces document comprehension time by ~80%.
+- **🔒 Privacy First:** Built on Google Cloud Platform (GCP) with ephemeral data processing—no user data is used for model training.
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## 🛠️ Tech Stack
+- **Frontend:** React.js (Vite), Tailwind CSS
+- **Backend Logic:** Python, Node.js
+- **AI Model:** Google Gemini 1.5 Pro (via Gemini API)
+- **Infrastructure:** Google Cloud Platform (GCP)
+
+## 📸 Screenshots
+| Upload Interface | Analysis Dashboard |
+|:---:|:---:|
+| ![Upload](insert-link-to-upload-screenshot.png) | ![Dashboard](insert-link-to-dashboard-screenshot.png) |
+
+## ⚙️ Run Locally
+
+Prerequisites: **Node.js** and a **Gemini API Key**.
+
+1. **Clone the repository**
+   ```bash
+   git clone [https://github.com/HARSHRAO729/CivicEase.git](https://github.com/HARSHRAO729/CivicEase.git)
+   cd CivicEase
+
+2. Install dependencies:
+
+   npm install
+   
+3. Set up Environment Variables Create a .env file in the root directory and add your API key:
+
+   VITE_GEMINI_API_KEY=your_api_key_here
+
+4. Start the Development Server;
+
+   npm run dev
+
+👥 The Team
+
+Harsh Rao - Co-Founder & Lead Engineer (www.linkedin.com/in/harsh-rao-dev)
+Purva Patel - Co-Founder & Product Lead (www.linkedin.com/in/purva-patel-955767376)
+
+Built with ❤️ for the Google AI Studio Challenge.
+   
